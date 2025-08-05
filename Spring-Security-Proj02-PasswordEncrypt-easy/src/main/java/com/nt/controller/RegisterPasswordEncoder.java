@@ -20,9 +20,10 @@ public class RegisterPasswordEncoder {
 		//encrypt the password
 		
 		String encodedPassword = passwordEncoder.encode(password);
-		
+		System.out.println("no one");
 		return "user: "+ username+" | encoded password:: "+encodedPassword;
 	}
+	
 	
 	
 }
