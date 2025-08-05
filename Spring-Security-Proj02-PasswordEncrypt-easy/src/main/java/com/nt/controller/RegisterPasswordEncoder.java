@@ -14,6 +14,7 @@ public class RegisterPasswordEncoder {
     @Autowired
     private PasswordEncoder passwordEncoder;
     
+    
 	@PostMapping("/register/{username}/{password}")
 	public String registerPwdEncoder(@PathVariable String username, @PathVariable String password) {
 		//encrypt the password
@@ -22,4 +23,6 @@ public class RegisterPasswordEncoder {
 		
 		return "user: "+ username+" | encoded password:: "+encodedPassword;
 	}
+	
+	
 }
