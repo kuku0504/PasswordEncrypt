@@ -21,12 +21,16 @@ public class SecurityConfig {
 	//disable basiic auth
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable())
-		.authorizeHttpRequests(auth -> auth.
-		requestMatchers("/register/**").permitAll()
-		.anyRequest().authenticated()
-		)
-		.formLogin();
-		return http.build();
+	    http.csrf(csrf -> csrf.disable())
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers("/register/**", "/registerSaveInMap").permitAll() // public
+	            .anyRequest().authenticated() // everything else requires login
+	        )
+	        .formLogin();
+	       
+
+	    return http.build();
 	}
+	
+	
 }
