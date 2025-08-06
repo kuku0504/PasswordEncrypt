@@ -23,10 +23,10 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	    http.csrf(csrf -> csrf.disable())
 	        .authorizeHttpRequests(auth -> auth
-	            .requestMatchers("/register/**", "/registerSaveInMap").permitAll() // public
+	            .requestMatchers("/register/**", "/registerSaveInMap", "/login").permitAll() // public
 	            .anyRequest().authenticated() // everything else requires login
 	        )
-	        .formLogin();
+	        .formLogin(form -> form.disable());
 	       
 
 	    return http.build();

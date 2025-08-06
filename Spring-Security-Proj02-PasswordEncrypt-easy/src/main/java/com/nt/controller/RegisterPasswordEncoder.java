@@ -34,4 +34,21 @@ public class RegisterPasswordEncoder {
 		return "user registered "+username;
 	}
 	
+	@PostMapping("/login")
+	public String loginUser(@RequestParam String username, @RequestParam String password) {
+		String storedPassword=users.get(username);
+		if(storedPassword==null) {
+			return "user not found";
+		}
+		
+		//now comapring the encoded password with the given password
+		boolean passwordMatch=passwordEncoder.matches(password, storedPassword);
+		if(passwordMatch) {
+			return "login successful";
+		}
+		else {
+			return "unsuccessful login";
+		}
+	}
+	
 }
